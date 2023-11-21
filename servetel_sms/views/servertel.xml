@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_servertel_account_form" model="ir.ui.view">
+        <field name="name">servertel.account.form</field>
+        <field name="model">servertel.account</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string='Servertel Account'>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. Account Name " required="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="servetel_username" />
+                           <field name="servetel_password"  password="True"/>
+                        </group>
+                        <group>
+                          
+                        </group>
+                    </group>
+                    <field name="message" placeholder="Enter default message here.."/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_servertel_account_tree" model="ir.ui.view">
+        <field name="model">servertel.account</field>
+        <field name="type">tree</field>
+        <field name="priority" eval="1" />
+        <field name="arch" type="xml">
+            <tree string="Servertel Account" sample="1">
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_view_servertel_account" model="ir.actions.act_window">
+        <field name="name">Servertel Accounts</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">servertel.account</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            Click to create a new Servertel Account
+            </p>
+        </field>
+    </record>
+
+
+    <record id="view_servetel_message_wizard_form" model="ir.ui.view">
+        <field name="name">wizard.servetel.message.form</field>
+        <field name="model">wizard.servetel.message</field>
+        <field name="arch" type="xml">
+            <form string="Send Message">
+                    <field name="phone" placeholder="Phone number" required="1"/>
+                    <field name="message" placeholder="Enter Message here..." required="1"/>
+                    <field name="servertel_id" invisible="1"/>
+                <footer>
+                    <button class="oe_highlight" name="send_message" string="Send SMS" type="object" />
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_servetel_message" model="ir.actions.act_window">
+        <field name="name">Send Message</field>
+        <field name="res_model">wizard.servetel.message</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_servetel_message_wizard_form" />
+        <field name="context">{}</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem action="action_view_servertel_account" id="menu_servertel_account" parent="base.menu_users" sequence="70" />
+
+    
+
+
+</odoo>

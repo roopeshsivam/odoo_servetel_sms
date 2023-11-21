@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+servertel_sms_crud,servertel_sms_crud,model_servertel_account,base.group_user,1,1,1,1
+wizard_servetel_message_crud,wizard_servetel_message_crud,model_wizard_servetel_message,base.group_user,1,1,1,1
